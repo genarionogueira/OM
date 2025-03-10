@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "lib": ["es2020"],
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "esModuleInterop": true,
+    "types": ["node","jest"],
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "rootDir":"./src",
+  },
+    "include": ["src/**/*"],
+    "exclude": [
+      "node_modules",
+      "src/__tests__",
+    ],
+    "ts-node":{
+      "esm": true,
+      "files": true
+    }
+  }

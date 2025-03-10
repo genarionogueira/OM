@@ -1,0 +1,26 @@
+services:
+  amenities-svc:  
+    build: 
+      context: .  
+      dockerfile: Dockerfile
+
+    ports:
+      - "4010:4010"  
+      - "9234:9234"  
+
+    volumes:
+      - .:/usr/src/app  
+      - /usr/src/app/node_module
+
+    environment: 
+      APP_PORT: 4010
+      APP_DEBUG: 9234
+      APP_NAME: amenities-svc
+      NODE_ENV: development
+      MONGODB_STR: ${MONGODB_STR}
+      URL: http://localhost:4010
+      HIVE_REGISTRY_TOKEN: ${HIVE_REGISTRY_TOKEN}
+
+    command: sh -c "            
+            npm run schema:publish && \
+            npm run watch"

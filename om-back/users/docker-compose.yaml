@@ -1,0 +1,22 @@
+services:
+  users-svc:  
+    build:  
+      context: .  
+      dockerfile: Dockerfile
+
+    ports:
+      - "3100:3100" 
+      - "9229:9229" 
+
+    volumes:
+      - .:/usr/src/app  
+      - /usr/src/app/node_module
+
+    environment:   
+      MONGODB_STR: ${MONGODB_STR}
+      APP_PORT: 3100
+      APP_NAME: users-svc
+      NODE_ENV: development
+
+    command: sh -c "
+        npm run start:debug  " 
